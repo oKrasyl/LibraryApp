@@ -33,23 +33,12 @@ public class AuthorControllerTest {
 
     @Test
     public void testAddAuthor() {
-        // Create a new Author object
         Author author = new Author();
         author.setName("Dickens");
         author.setPhoneNumber("+12 34 567 8901");
-
-        // Send a POST request to the /author endpoint to add the author
         ResponseEntity<Author> response = restTemplate.postForEntity("/author", author, Author.class);
-
-        // Verify the response
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-
-        // Get the created author from the response body
         Author createdAuthor = response.getBody();
-
-        // Assert that the created author is not null
         assertNotNull(createdAuthor);
-
-        // Add more assertions to validate the response as needed
     }
 }
